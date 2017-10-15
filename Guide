@@ -1,0 +1,117 @@
+安装Geth
+国内镜像站：http://ethfans.org/wikis/Ethereum-Geth-Mirror、
+Windows：直接安装，在安装目录下(或者写入环境变量)
+geth --help
+来确认是否安装完成。
+Ubuntu :
+sudo apt-get update
+
+sudo apt-get installsoftware-properties-common
+
+sudo add-apt-repository -yppa:ethereum/ethereum
+
+sudo add-apt-repository -yppa:ethereum/ethereum-dev
+
+sudo apt-get update
+
+sudo apt-get install ethereum
+
+1	导入初始块genesis.json
+{
+	"config" : {
+	"chainId" : 15,
+	"homesteadBlock" : 0,
+	"eip155Block" : 0,
+	"eip158block" : 0
+		},
+	    "nonce":"0x0000000000000042",
+	    "mixhash":"0x0000000000000000000000000000000000000000000000000000000000000000",
+	    "difficulty": "0x4000",
+	    "alloc": {},
+	    "coinbase":"0x0000000000000000000000000000000000000000",
+	    "timestamp": "0x00",
+	    "parentHash":"0x0000000000000000000000000000000000000000000000000000000000000000",
+	    "extraData": "",
+	    "gasLimit":"0xffffffff"
+	}
+
+
+geth --datadir [data directory(ex ./data)] init genesis.json
+
+
+
+Info
+mixhash	与nonce配合用于挖矿，由上一个区块的一部分生成的hash。注意他和nonce的设置需要满足以太坊的Yellow paper, 4.3.4. Block Header Validity, (44)章节所描述的条件。.
+nonce	nonce就是一个64位随机数，用于挖矿，注意他和mixhash的设置需要满足以太坊的Yellow paper, 4.3.4. Block Header Validity, (44)章节所描述的条件。
+difficulty	设置当前区块的难度，如果难度过大，cpu挖矿就很难，这里设置较小难度
+alloc	用来预置账号以及账号的以太币数量，因为私有链挖矿比较容易，所以我们不需要预置有币的账号，需要的时候自己创建即可以。
+coinbase	矿工的账号，随便填
+timestamp	设置创世块的时间戳
+parentHash	上一个区块的hash值，因为是创世块，所以这个值是0
+extraData	附加信息，随便填，可以填你的个性信息
+gasLimit	该值设置对GAS的消耗总量限制，用来限制区块能包含的交易信息总和，因为我们是私有链，所以填最大。
+
+geth --datadir ./data --networkid 314590 --ipcdisable --port 61910 --rpcport 8200 console
+
+
+
+identity	区块链的标示，随便填写，用于标示目前网络的名字
+init	指定创世块文件的位置，并创建初始块
+datadir	设置当前区块链网络数据存放的位置
+port	网络监听端口
+rpc	启动rpc通信，可以进行智能合约的部署和调试
+rpcapi	设置允许连接的rpc的客户端，一般为db,eth,net,web3
+networkid	设置当前区块链的网络ID，用于区分不同的网络，是一个数字
+console	启动命令行模式，可以在Geth中执行命令
+
+创建账号：
+personal.newAccount()
+查看账号：
+eth.accounts
+
+查看钱包：
+eth.getBalance(eth.accounts[0])
+
+挖矿：
+miner.start()
+miner.stop()
+
+
+
+
+
+私有链连接节点：
+节点1：
+启动节点
+>geth --datadir ./data --networkid 314590 --ipcdisable --port 61910 --rpcport 8200 console
+
+获取节点实例的enode url:
+>admin.nodeInfo.enode
+
+获取ip：
+$ ifconfig|grep netmask|awk '{print $2}'
+
+
+节点2：
+初始化节点
+geth --datadir ./datainit ./genesis.json
+
+启动节点
+geth --datadir ./data --networkid 314590(相同节点1) --ipcdisable --port 61911(不相同) --rpcport 8101(不相同) --bootnodes "enode://ad307e052d0e04af519b8999fa870800df8a7a0cc2a91e6aea30e879b75c344dfa12c773a63a71677c2a3ea1254cf982815817f7ff58bd79e5837ea44d791a2d@192.168.1.2:61910" console
+
+or admin.addPeer(enodeUrlOfFirst Instance) 添加
+
+确认节点添加成功：
+ admin.nodeInfo
+
+net.peerCount
+
+admin.peers
+
+
+
+
+
+
+personal.unlockAccount(eth.accounts[0], "pwd")
+
