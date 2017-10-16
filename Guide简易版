@@ -36,7 +36,7 @@ sudo apt-get install ethereum
 	}
 
 
-geth --datadir [data directory(ex ./data)] init genesis.json
+>geth --datadir [data directory(ex ./data)] init genesis.json
 
 
 
@@ -51,7 +51,7 @@ parentHash	上一个区块的hash值，因为是创世块，所以这个值是0
 extraData	附加信息，随便填，可以填你的个性信息
 gasLimit	该值设置对GAS的消耗总量限制，用来限制区块能包含的交易信息总和，因为我们是私有链，所以填最大。
 
-geth --datadir ./data --networkid 314590 --ipcdisable --port 61910 --rpcport 8200 console
+>geth --datadir ./data --networkid 314590 --ipcdisable --port 61910 --rpcport 8200 console
 
 
 
@@ -65,16 +65,16 @@ networkid	设置当前区块链的网络ID，用于区分不同的网络，是�
 console	启动命令行模式，可以在Geth中执行命令
 
 创建账号：
-personal.newAccount()
+>personal.newAccount()
 查看账号：
-eth.accounts
+>eth.accounts
 
 查看钱包：
-eth.getBalance(eth.accounts[0])
+>eth.getBalance(eth.accounts[0])
 
 挖矿：
-miner.start()
-miner.stop()
+>miner.start()
+>miner.stop()
 
 
 
@@ -94,24 +94,26 @@ $ ifconfig|grep netmask|awk '{print $2}'
 
 节点2：
 初始化节点
-geth --datadir ./datainit ./genesis.json
+>geth --datadir ./datainit ./genesis.json
 
 启动节点
-geth --datadir ./data --networkid 314590(相同节点1) --ipcdisable --port 61911(不相同) --rpcport 8101(不相同) --bootnodes "enode://ad307e052d0e04af519b8999fa870800df8a7a0cc2a91e6aea30e879b75c344dfa12c773a63a71677c2a3ea1254cf982815817f7ff58bd79e5837ea44d791a2d@192.168.1.2:61910" console
+>geth --datadir ./data --networkid 314590(相同节点1) --ipcdisable --port 61911(不相同) --rpcport 8101(不相同) --bootnodes "enode://ad307e052d0e04af519b8999fa870800df8a7a0cc2a91e6aea30e879b75c344dfa12c773a63a71677c2a3ea1254cf982815817f7ff58bd79e5837ea44d791a2d@192.168.1.2:61910" console
 
-or admin.addPeer(enodeUrlOfFirst Instance) 添加
+or 
+
+>admin.addPeer(enodeUrlOfFirst Instance) 添加节点
 
 确认节点添加成功：
- admin.nodeInfo
+>admin.nodeInfo
 
-net.peerCount
+>net.peerCount
 
-admin.peers
-
-
+>admin.peers
 
 
 
 
-personal.unlockAccount(eth.accounts[0], "pwd")
+
+解锁帐号：
+>personal.unlockAccount(eth.accounts[0], "pwd")
 
