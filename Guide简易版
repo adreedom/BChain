@@ -16,6 +16,12 @@ sudo apt-get update
 
 sudo apt-get install ethereum
 
+
+Respberry Pi 3 model B:
+https://geth.ethereum.org/downloads/
+choose Geth 1.7.2 ARMv7 Version
+
+
 1	导入初始块genesis.json
 {
 	"config" : {
