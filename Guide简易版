@@ -8,9 +8,9 @@ sudo apt-get update
 
 sudo apt-get installsoftware-properties-common
 
-sudo add-apt-repository -yppa:ethereum/ethereum
+sudo add-apt-repository -y ppa:ethereum/ethereum
 
-sudo add-apt-repository -yppa:ethereum/ethereum-dev
+sudo add-apt-repository -y ppa:ethereum/ethereum-dev
 
 sudo apt-get update
 
@@ -21,7 +21,11 @@ Respberry Pi 3 model B:
 https://geth.ethereum.org/downloads/
 choose Geth 1.7.2 ARMv7 Version
 
+---------------------------
+Geth command line options
+https://github.com/ethereum/go-ethereum/wiki/Command-Line-Options
 
+---------------------------
 1	导入初始块genesis.json
 {
 	"config" : {
