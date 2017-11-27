@@ -1,0 +1,12 @@
+chown -R zzy /usr/lib
+
+create soft link : ln -s /usr/lib/go-1.9/src/sacc/ /home/zzy/Desktop/sacc
+
+search soft link : whereis go
+
+chmod -R 777 /home/linux
+
+docker rm `docker ps -a -q`：删除所有容器
+
+
+sudo chown -R zzy /usr/lib/node-v8.9.1-linux-x64   permission get
