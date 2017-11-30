@@ -10,3 +10,5 @@ docker rm `docker ps -a -q`：删除所有容器
 
 
 sudo chown -R zzy /usr/lib/node-v8.9.1-linux-x64   permission get
+
+git clone -b master https://github.com/hyperledger/fabric-samples.git
