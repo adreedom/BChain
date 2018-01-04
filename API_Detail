@@ -1,0 +1,34 @@
+http://182.61.49.216:8081/queryFunc?funcName='queryClientInfo'&argments='CLIENT2'
+return:
+Store path:/home/zzy/fabric-samples/fabcar/hfc-key-store Successfully loaded user1 from persistence queryClientInfo [ 'queryClientInfo', 'CLIENT2' ] Query has completed, checking results Response is {"Asset":[{"AssetAmount":500,"AssetID":"A1","AssetName":"ATVI"},{"AssetAmount":500,"AssetID":"A2","AssetName":"BABA"},{"AssetAmount":500,"AssetID":"A3","AssetName":"JD"},{"AssetAmount":500,"AssetID":"A4","AssetName":"AMD"},{"AssetAmount":500,"AssetID":"A5","AssetName":"INTEL"}],"ClientID":"EB3E4F0A-1A47-4C95-8B07-543B69A0BC27","Name":"LI Seng","Status":"active"}
+
+http://182.61.49.216:8081/queryFunc?funcName='queryAllAsset'&argments=''
+return:
+Store path:/home/zzy/fabric-samples/fabcar/hfc-key-store Successfully loaded user1 from persistence queryAllAsset [ 'queryAllAsset', '' ] Query has completed, checking results Response is [{"Key":"CLIENT0","Record":{"Asset":[{"AssetAmount":2500,"AssetID":"A1","AssetName":"ATVI"},{"AssetAmount":2500,"AssetID":"A2","AssetName":"BABA"},{"AssetAmount":2500,"AssetID":"A3","AssetName":"JD"},{"AssetAmount":2500,"AssetID":"A4","AssetName":"AMD"},{"AssetAmount":2500,"AssetID":"A5","AssetName":"INTEL"}],"ClientID":"72472ADC-6196-4BF8-A307-18694A11FE2E","Name":"ZHANG Ziyu","Status":"active"}},{"Key":"CLIENT1","Record":{"Asset":[{"AssetAmount":1500,"AssetID":"A1","AssetName":"ATVI"},{"AssetAmount":1500,"AssetID":"A2","AssetName":"BABA"},{"AssetAmount":1500,"AssetID":"A3","AssetName":"JD"},{"AssetAmount":1500,"AssetID":"A4","AssetName":"AMD"},{"AssetAmount":1500,"AssetID":"A5","AssetName":"INTEL"}],"ClientID":"99259E74-97AA-4DF2-AD8A-9EF1B322196F","Name":"LI Siliang","Status":"active"}},{"Key":"CLIENT2","Record":{"Asset":[{"AssetAmount":500,"AssetID":"A1","AssetName":"ATVI"},{"AssetAmount":500,"AssetID":"A2","AssetName":"BABA"},{"AssetAmount":500,"AssetID":"A3","AssetName":"JD"},{"AssetAmount":500,"AssetID":"A4","AssetName":"AMD"},{"AssetAmount":500,"AssetID":"A5","AssetName":"INTEL"}],"ClientID":"EB3E4F0A-1A47-4C95-8B07-543B69A0BC27","Name":"LI Seng","Status":"active"}},{"Key":"CLIENT3","Record":{"Asset":[{"AssetAmount":1500,"AssetID":"A1","AssetName":"ATVI"},{"AssetAmount":2500,"AssetID":"A2","AssetName":"BABA"},{"AssetAmount":3500,"AssetID":"A3","AssetName":"JD"}],"ClientID":"BB814CDE-3228-487A-A999-8F419C2DC740","Name":"FAN Zhiyu","Status":"active"}},{"Key":"CLIENT4","Record":{"Asset":[{"AssetAmount":3500,"AssetID":"A4","AssetName":"AMD"},{"AssetAmount":5500,"AssetID":"A5","AssetName":"INTEL"}],"ClientID":"39D5FD2B-D016-4785-9F16-5831CF5A220A","Name":"WANG Quan","Status":"active"}}]
+
+http://182.61.49.216:8081/invokeFunc?funcName='doInnerTransaction'&argments='CLIENT1' 'CLIENT0' 'A1' '500'
+Store path:/home/zzy/fabric-samples/fabcar/hfc-key-store Successfully loaded user1 from persistence Assigning transaction_id: f8468e4faa75c3d41a0ccfdc5973d37d6c7d242683d0e38853d6b04d1fb8dc45 Transaction proposal was good Successfully sent Proposal and received ProposalResponse: Status - 200, message - "OK" [32minfo[39m: [EventHub.js]: _connect - options {"grpc.max_receive_message_length":-1,"grpc.max_send_message_length":-1} The transaction has been committed on peer localhost:7053 Send transaction promise and event listener promise have completed Successfully sent transaction to the orderer. Successfully committed the change to the ledger by the peer
+
+http://182.61.49.216:8081/queryFunc?funcName='queryTransactions'&argments='CLIENT1'
+Store path:/home/zzy/fabric-samples/fabcar/hfc-key-store Successfully loaded user1 from persistence queryTransactions [ 'queryTransactions', 'CLIENT1' ] Query has completed, checking results Response is [{"TransactionID":"TRANC1","Record":{"Asset":{"AssetAmount":"500","AssetID":"A1","AssetName":"ATVI"},"CF":"CLIENT1","CT":"CLIENT0","TsID":"TRANC1"}}]
+
+http://182.61.49.216:8081/queryFunc?funcName='queryTransactions'&argments='ALL'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
